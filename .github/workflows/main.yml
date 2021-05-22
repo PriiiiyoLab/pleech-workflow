@@ -1,4 +1,4 @@
-name: MirrorBot Environment
+name: LeechBot Environment
 
 on:
   push:
@@ -27,10 +27,10 @@ jobs:
           git config --global credential.helper store
           echo "https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
-      - name: Clone The Secret Mirror Repository
+      - name: Clone The Secret Leech Repository
         run: |
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.MIRROR_REPOSLUG }} -b ${Branch} source
-      - name: Compile The Mirroring Docker Container
+      - name: Compile The Leeching Docker Container
         run: |
           cd source || exit 1
           docker container prune --force || true
